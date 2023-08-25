@@ -70,8 +70,7 @@ function Header() {
 }
 
 function Menu() {
-  const pizzas = pizzaData;
-  const numPizzas = pizzas.length;
+  const numPizzas = pizzaData.length;
 
   return (
     <main className="menu">
@@ -98,14 +97,15 @@ function Menu() {
 
 function Pizza({ pizzaObj }) {
   // if (pizzaObj.soldOut) return null;
+  const { soldOut, photoName, name, price, ingredients } = pizzaObj;
 
   return (
-    <li className={`pizza ${pizzaObj.soldOut ? 'sold-out' : ''}`}>
+    <li className={`pizza ${soldOut ? "sold-out" : ""}`}>
       <div>
-        <img src={pizzaObj.photoName} alt={pizzaObj.name}></img>
-        <h3>{pizzaObj.name}</h3>
-        <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
+        <img src={photoName} alt={name}></img>
+        <h3>{name}</h3>
+        <p>{ingredients}</p>
+        <span>{soldOut ? "SOLD OUT" : price}</span>
       </div>
     </li>
   );
@@ -132,7 +132,7 @@ function Footer() {
   );
 }
 
-function Order({ openHour, closeHour}) {
+function Order({ openHour, closeHour }) {
   return (
     <div className="order">
       <p>
